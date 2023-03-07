@@ -50,11 +50,11 @@ class Man {
 
 class Woman {
     
-    var name = "Aline"
-    var age = 33
-    var nationality = "Italiana"
-    var team = "São Paulo"
-    var height = 1.62
+    var name: String = "Aline"
+    var age: Int = 33
+    var nationality: String = "Italiana"
+    var team: String = "São Paulo"
+    var height: Double = 1.62
     
     func lieDown() {
         print("Aline andou")
