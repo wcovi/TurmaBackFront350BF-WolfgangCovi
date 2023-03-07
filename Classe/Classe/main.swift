@@ -30,3 +30,53 @@ class Automovel {
     }
     
 }
+
+class Homem {
+    
+    var nome: String = "Wolfgang"
+    var idade: Int = 38
+    var nacionalidade: String = "Austríaca"
+    var time: String = "Palmeiras"
+    var altura: Double = 1.92
+    
+    func andar() {
+        print("Wolf andou")
+    }
+    
+    func dormir() {
+        print("Wolf dormiu")
+    }
+}
+
+class Mulher {
+    
+    var nome = "Aline"
+    var idade = 33
+    var nacionalidade = "Italiana"
+    var time = "São Paulo"
+    var altura = 1.62
+    
+    func deitar() {
+        print("Aline andou")
+    }
+    
+    func correr() {
+        print("Aline correu")
+    }
+}
+
+class Mae {
+    var nome: String = "Antonia"
+    var idade: Int = 79
+    var nacionalidade: String = "Italiana"
+    var religiao: String = "Católica"
+    var altura: Double = 172
+    
+    func sorrir() {
+        print("Nia sorriu")
+    }
+    
+    func sentar() {
+        print("Nia sentou")
+    }
+}
