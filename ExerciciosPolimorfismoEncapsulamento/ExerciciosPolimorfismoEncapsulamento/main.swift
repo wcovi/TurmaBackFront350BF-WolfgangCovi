@@ -41,7 +41,7 @@ class SalesMan {
         
         if quantidade >= 3 {
             total = 350 * quantidade
-            return "Total a pagar nos ternos com desconto é \(total)"
+            return "Total a pagar nos ternos com desconto é \(total)."
         } else {
             total = price * quantidade
             return "Total a pagar nos ternos é \(total)."
@@ -61,11 +61,11 @@ class SalesMan {
     }
 }
 
-var saleTerno = SalesMan(name: "Wolf", age: 38, cpf: "000.000.000-00", balance: 100000)
-print(saleTerno.vender(quantidadeDePecas: 3, tipoDePeca: "terno"))
+var saleTerno: SalesMan = SalesMan(name: "Wolf", age: 38, cpf: "000.000.000-00", balance: 100000)
+saleTerno.vender(quantidadeDePecas: 3, tipoDePeca: "terno")
 
-var saleVestido = SalesMan(name: "Joana", age: 33, cpf: "000.000.000-01", balance: 200000)
-print(saleVestido.vender(quantidadeDePecas: 6, tipoDePeca: "vestido"))
+var saleVestido: SalesMan = SalesMan(name: "Joana", age: 33, cpf: "000.000.000-01", balance: 200000)
+saleVestido.vender(quantidadeDePecas: 6, tipoDePeca: "vestido")
 
 
 // Exercício Funcionários
@@ -73,17 +73,17 @@ print(saleVestido.vender(quantidadeDePecas: 6, tipoDePeca: "vestido"))
 
 class Funcionario {
     var nome: String
-    var salario: Int
+    var salario: Double
     var cpf: String
     
-    init(nome: String, salario: Int, cpf: String) {
+    init(nome: String, salario: Double, cpf: String) {
         self.nome = nome
         self.salario = salario
         self.cpf = cpf
     }
     
-    func calcBonus(salario: Double) -> String {
-        var bonus = salario * 0
+    func calcBonus() -> String {
+        let bonus = salario * 12 * 0
         return "O valor do bonus é \(bonus)."
     }
 }
@@ -91,13 +91,13 @@ class Funcionario {
 class Developer: Funcionario {
     var platform: String
     
-    init(platform: String, nome: String, salario: Int, cpf: String) {
+    init(platform: String, nome: String, salario: Double, cpf: String) {
         self.platform = platform
         super.init(nome: nome, salario: salario, cpf: cpf)
     }
     
-    override func calcBonus(salario: Double) -> String {
-        var bonus = salario * 0.20
+    override func calcBonus() -> String {
+        let bonus = salario * 12 * 0.20
         return "O valor do bonus de um Developer é \(bonus)."
     }
 }
@@ -105,55 +105,57 @@ class Developer: Funcionario {
 class Designer: Funcionario {
     var tool: String
     
-    init(tool: String, nome: String, salario: Int, cpf: String) {
+    init(tool: String, nome: String, salario: Double, cpf: String) {
         self.tool = tool
         super.init(nome: nome, salario: salario, cpf: cpf)
     }
     
-    override func calcBonus(salario: Double) -> String {
-        var bonus = salario * 0.15
+    override func calcBonus() -> String {
+        let bonus = salario * 0.15
         return "O valor do bonus de um Designer é \(bonus)."
     }
 }
 
-var designer1 = Designer(tool: "Photoshop", nome: "Aline", salario: 10000, cpf: "000.000.000-00")
-print(designer1.calcBonus(salario: 10000))
+var developer1 = Developer(platform: "iOS", nome: "Roberto", salario: 10000, cpf: "000.000.000-00")
+print(developer1.calcBonus())
 
 // como já usar o salário dentro da função?
 
-var developer1 = Developer(platform: "iOS", nome: "Roberto", salario: 10000, cpf: "000.000.000-00")
-print(developer1.calcBonus(salario: 10000))
-
+var designer1 = Designer(tool: "Photoshop", nome: "Aline", salario: 10000, cpf: "000.000.000-00")
+print(designer1.calcBonus())
 
 // Exercício Veículo
 // Definir uma classe Veículo com cor, preço e quantidade de passageiros, depois defina as classes Carro que tem tamanho das rodas, e Avião que tem piloto e companhia aérea. queremos descobrir a quantidade de combustível que cada um dos veículos gasta por viagem, defina um método que recebe como parâmetro a distancia em Km e calcule a quantidade de combustível. Carro: tamanho das rodas * quantidade de passageiros * distancia Avião: quantidade de passageiros * distancia
 
 class Veiculo {
-    var cor: String
-    var price: Double
     var quantPassageiros: Int
     
-    init(cor: String, price: Double, quantPassageiros: Int) {
-        self.cor = cor
-        self.price = price
+    init(quantPassageiros: Int) {
         self.quantPassageiros = quantPassageiros
-        
+    }
+    
+    func calcularCombustivel(km: Double) -> Double {
+        return km * Double(quantPassageiros)
     }
 }
 
 class Carro: Veiculo {
-    var tamanhoRodas: Double
+    var tamanhoRodas: Int
     
-    private func combustivelGasto(tamanhoRodas: Double, quantidadePassageiros:) -> <#return type#> {
-        <#function body#>
+    init(tamanhoRodas: Int, quantPassageiros: Int) {
+        self.tamanhoRodas = tamanhoRodas
+        super.init(quantPassageiros: quantPassageiros)
     }
-    
-    
+
+    override func calcularCombustivel(km: Double) -> Double {
+        return Double(tamanhoRodas) * Double(quantPassageiros) * km
+    }
+
 }
 
 class Aviao: Veiculo {
-    var piloto: String
-    var companhia: String
+    
 }
 
-
+var boing: Aviao = Aviao(quantPassageiros: 200)
+Aviao.calcularCombustivel(<#T##self: Veiculo##Veiculo#>)
