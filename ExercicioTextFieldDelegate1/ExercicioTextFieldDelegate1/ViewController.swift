@@ -29,28 +29,22 @@ class ViewController: UIViewController {
         addressTextField.placeholder = "Digite seu e-mail:"
         passwordTextField.placeholder = "Digite sua senha:"
         registerButton.setTitle("Cadastrar", for: UIControl.State.normal)
-//        O que seria isso?
         nameTextField.delegate = self
         addressTextField.delegate = self
         passwordTextField.delegate = self
         setTextField()
-        registerButton.isEnabled = false
+        registerButton.isEnabled == false
     }
 
     func setTextField() {
         nameTextField.layer.borderWidth = 2
-        nameTextField.layer.borderColor = UIColor.red.cgColor
         addressTextField.layer.borderWidth = 2
-        addressTextField.layer.borderColor = UIColor.red.cgColor
         passwordTextField.layer.borderWidth = 2
-        passwordTextField.layer.borderColor = UIColor.red.cgColor
     }
 
-    @IBAction func registerButton(_ sender: Any) {
+    @IBAction func tappedRegisterButton(_ sender: Any) {
         print("Cadastro realizado com sucesso.")
     }
-//        Tem problema ser o mesmo nome?
-
 }
 
 extension ViewController: UITextFieldDelegate {
@@ -68,7 +62,7 @@ extension ViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if nameTextField.hasText == true && addressTextField.hasText == true && passwordTextField.hasText == true {
+        if nameTextField.hasText && addressTextField.hasText && passwordTextField.hasText {
             registerButton.isEnabled = true
         }
     }
